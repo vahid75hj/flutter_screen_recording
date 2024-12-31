@@ -27,7 +27,7 @@ abstract class FlutterScreenRecordingPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<bool> startRecordScreen(
+  Future<String?> startRecordScreen(
     String name, {
     String notificationTitle = "",
     String notificationMessage = "",
@@ -35,7 +35,7 @@ abstract class FlutterScreenRecordingPlatform extends PlatformInterface {
     throw UnimplementedError();
   }
 
-  Future<bool> startRecordScreenAndAudio(
+  Future<String?> startRecordScreenAndAudio(
     String name, {
     String notificationTitle = "",
     String notificationMessage = "",
