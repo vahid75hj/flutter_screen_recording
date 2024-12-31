@@ -53,10 +53,10 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
                 mMediaProjection = mProjectionManager?.getMediaProjection(resultCode, data!!)
                 mMediaProjection?.registerCallback(mMediaProjectionCallback!!, null)
                 mVirtualDisplay = createVirtualDisplay()
-                _result.success(true)
+                _result.success(mFileName)
                 return true
             } else {
-                _result.success(false)
+                _result.success(null)
             }
         }
         return false
@@ -106,7 +106,7 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
                 } catch (e: Exception) {
                     println("Error onMethodCall startRecordScreen")
                     println(e.message)
-                    result.success(false)
+                    result.success(null)
                 }
             }
             "stopRecordScreen" -> {

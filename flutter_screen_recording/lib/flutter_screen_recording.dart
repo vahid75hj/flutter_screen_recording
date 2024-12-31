@@ -7,7 +7,7 @@ import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:flutter_screen_recording_platform_interface/flutter_screen_recording_platform_interface.dart';
 
 class FlutterScreenRecording {
-  static Future<bool> startRecordScreen(String name, {String? titleNotification, String? messageNotification}) async {
+  static Future<String?> startRecordScreen(String name, {String? titleNotification, String? messageNotification}) async {
     try {
       if (titleNotification == null) {
         titleNotification = "";
@@ -17,7 +17,7 @@ class FlutterScreenRecording {
       }
 
       await _maybeStartFGS(titleNotification, messageNotification);
-      final bool start = await FlutterScreenRecordingPlatform.instance.startRecordScreen(
+      final String? start = await FlutterScreenRecordingPlatform.instance.startRecordScreen(
         name,
         notificationTitle: titleNotification,
         notificationMessage: messageNotification,
@@ -29,10 +29,10 @@ class FlutterScreenRecording {
       print(err);
     }
 
-    return false;
+    return null;
   }
 
-  static Future<bool> startRecordScreenAndAudio(String name,
+  static Future<String?> startRecordScreenAndAudio(String name,
       {String? titleNotification, String? messageNotification}) async {
     try {
       if (titleNotification == null) {
@@ -42,7 +42,7 @@ class FlutterScreenRecording {
         messageNotification = "";
       }
       await _maybeStartFGS(titleNotification, messageNotification);
-      final bool start = await FlutterScreenRecordingPlatform.instance.startRecordScreenAndAudio(
+      final String? start = await FlutterScreenRecordingPlatform.instance.startRecordScreenAndAudio(
         name,
         notificationTitle: titleNotification,
         notificationMessage: messageNotification,
@@ -52,7 +52,7 @@ class FlutterScreenRecording {
       print("startRecordScreenAndAudio err");
       print(err);
     }
-    return false;
+    return null;
   }
 
   static Future<String> get stopRecordScreen async {
