@@ -10,17 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_foreground_task: ^6.0.0+1
+  flutter_foreground_task: ^3.10.0
   flutter_screen_recording_platform_interface:
     git:
         url: https://github.com/vahid75hj/flutter_screen_recording.git
         ref: master
         path: flutter_screen_recording_platform_interface
-  flutter_screen_recording_web:
-    git:
-      url: https://github.com/vahid75hj/flutter_screen_recording.git
-      ref: master
-      path: flutter_screen_recording_web
 
 dev_dependencies:
   flutter_test:
