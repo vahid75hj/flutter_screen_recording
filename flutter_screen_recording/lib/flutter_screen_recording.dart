@@ -7,7 +7,8 @@ import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:flutter_screen_recording_platform_interface/flutter_screen_recording_platform_interface.dart';
 
 class FlutterScreenRecording {
-  static Future<String?> startRecordScreen(String name, {String? titleNotification, String? messageNotification}) async {
+  static Future<String?> startRecordScreen(String name,
+      {String? titleNotification, String? messageNotification}) async {
     try {
       if (titleNotification == null) {
         titleNotification = "";
@@ -17,7 +18,8 @@ class FlutterScreenRecording {
       }
 
       await _maybeStartFGS(titleNotification, messageNotification);
-      final String? start = await FlutterScreenRecordingPlatform.instance.startRecordScreen(
+      final String? start = await FlutterScreenRecordingPlatform.instance
+          .startRecordScreen(
         name,
         notificationTitle: titleNotification,
         notificationMessage: messageNotification,
@@ -42,7 +44,8 @@ class FlutterScreenRecording {
         messageNotification = "";
       }
       await _maybeStartFGS(titleNotification, messageNotification);
-      final String? start = await FlutterScreenRecordingPlatform.instance.startRecordScreenAndAudio(
+      final String? start = await FlutterScreenRecordingPlatform.instance
+          .startRecordScreenAndAudio(
         name,
         notificationTitle: titleNotification,
         notificationMessage: messageNotification,
@@ -55,9 +58,22 @@ class FlutterScreenRecording {
     return null;
   }
 
+  static Future<String?> captureImage() async {
+    try {
+      final String? path = await FlutterScreenRecordingPlatform.instance
+          .captureImage();
+      return path;
+    }catch(e){
+      print("CAPTURE ERROR");
+      print(e);
+    }
+    return null;
+  }
+
   static Future<String> get stopRecordScreen async {
     try {
-      final String path = await FlutterScreenRecordingPlatform.instance.stopRecordScreen;
+      final String path = await FlutterScreenRecordingPlatform.instance
+          .stopRecordScreen;
       if (!kIsWeb && Platform.isAndroid) {
         FlutterForegroundTask.stopService();
       }
