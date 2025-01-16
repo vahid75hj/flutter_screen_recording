@@ -37,6 +37,12 @@ class MethodChannelFlutterScreenRecording
     return start;
   }
 
+  Future<String?> captureImage() async{
+    final String? imagePath = await _channel.invokeMethod('captureImage');
+    print("ImagePath");
+    return imagePath;
+  }
+
   Future<String> get stopRecordScreen async {
     final String path = await _channel.invokeMethod('stopRecordScreen');
     return path;
